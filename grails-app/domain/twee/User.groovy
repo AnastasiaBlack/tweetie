@@ -1,5 +1,6 @@
 package twee
 
+import com.google.gson.annotations.Expose
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
@@ -11,6 +12,7 @@ class User implements Serializable {
 
 	transient springSecurityService
 
+	@Expose
 	String username
 	String password
 	boolean enabled = true
