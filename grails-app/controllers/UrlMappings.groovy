@@ -7,9 +7,13 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: "login") //(view:"/index")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
+        "/"(view:"/index")
+
+        "400"(controller: "error", action: "invalid")
+        "500"(controller: "error", action: "denied")
+        "403"(controller: "error", action: "denied")
+        "404"(controller: "error", action: "notFound")
+
         "/login/$action?"(controller: "login")
         "/logout/$action?"(controller: "logout")
     }

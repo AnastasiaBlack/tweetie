@@ -1,4 +1,5 @@
 // Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.adh.errorPage = null
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'twee.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'twee.UserRole'
 grails.plugin.springsecurity.authority.className = 'twee.Role'
@@ -14,16 +15,16 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/**/images/**',   access: ['permitAll']],
 	[pattern: '/**/favicon.ico', access: ['permitAll']],
     [pattern: '/login/**', access: ['permitAll']],
-    [pattern: '/user/**', access: ['permitAll'],
-    ]
+    [pattern: '/user/**', access: ['permitAll']],
+	[pattern: '/**', access: ['permitAll']]
 ]
-
-grails.plugin.springsecurity.filterChain.chainMap = [
-	[pattern: '/assets/**',      filters: 'none'],
-	[pattern: '/**/js/**',       filters: 'none'],
-	[pattern: '/**/css/**',      filters: 'none'],
-	[pattern: '/**/images/**',   filters: 'none'],
-	[pattern: '/**/favicon.ico', filters: 'none'],
-	[pattern: '/**',             filters: 'JOINED_FILTERS']
-]
-
+//
+//grails.plugin.springsecurity.filterChain.chainMap = [
+//	[pattern: '/assets/**',      filters: 'none'],
+//	[pattern: '/**/js/**',       filters: 'none'],
+//	[pattern: '/**/css/**',      filters: 'none'],
+//	[pattern: '/**/images/**',   filters: 'none'],
+//	[pattern: '/**/favicon.ico', filters: 'none'],
+//	[pattern: '/**',             filters: 'JOINED_FILTERS']
+//]
+//
