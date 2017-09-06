@@ -16,8 +16,8 @@ class QuoteController {
 
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def home() {
-        List myQuotes = Quote.all
-        [myQuotes: myQuotes]
+        List quotes = Quote.all
+        [quotes: quotes]
     }
 
 

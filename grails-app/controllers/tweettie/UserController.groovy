@@ -6,6 +6,7 @@ import grails.converters.JSON
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import groovy.json.*
+import twee.Quote
 import twee.User
 
 
@@ -13,6 +14,14 @@ class UserController {
     static scaffold = User
     def userService
     SpringSecurityService springSecurityService
+
+
+
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
+    def home() {
+        List quotes = Quote.all
+        [quotes: quotes]
+    }
 
 
 //    def index() {}
@@ -39,7 +48,7 @@ class UserController {
         User userToFollow = User.get(params.id)
         userService.followUser(userToFollow)
         User currentUser = springSecurityService.getCurrentUser()
-        render(currentUser as JSON)
+//        render(currentUser as JSON)
     }
 
 

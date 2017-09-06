@@ -31,13 +31,18 @@
     </g:link>
     </li>
             <li style="margin: 5pt">
-                <g:link action="random">
+                <g:link controller="quote" action="random">
                     Random Quote
                 </g:link>
             </li>
             <li style="margin: 5pt">
-                <g:link action="quoteEditor">
+                <g:link controller="quote" action="quoteEditor">
                     New Quote
+                </g:link>
+            </li>
+            <li style="margin: 5pt">
+                <g:link controller="user" action="allUsers">
+                    Find Friends
                 </g:link>
             </li>
 </ul>

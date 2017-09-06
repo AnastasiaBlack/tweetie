@@ -8,7 +8,7 @@
 <body>
 <g:render template="menu"/>
 
-    <g:each var="quote" in="${myQuotes}">
+    <g:each var="quote" in="${quotes}">
         <div id="quote">
             <q>${quote.content}</q>
             <p>${quote.author.username}</p>
