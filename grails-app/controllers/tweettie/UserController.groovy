@@ -28,7 +28,8 @@ class UserController {
 
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def allUsers() {
-        def users = User.findAll()
+        long currentUserId = springSecurityService.getCurrentUserId()
+        def users = User.findAllByIdNotEqual(currentUserId)
 
 //        GsonBuilder builder = new GsonBuilder()
 //        builder.excludeFieldsWithoutExposeAnnotation()
