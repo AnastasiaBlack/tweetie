@@ -1,11 +1,19 @@
 <html>
-  <head>
+<head>
     <title>Random Quote</title>
-  </head>
- <body>
-    <div id="quote">
-      <q>${content}</q>
-      <p>${author}</p>
-    </div>
-  </body>
+    <asset:stylesheet src="AllElementsTableStyle.css"/>
+
+</head>
+
+<body>
+<g:render template="menu"/>
+
+    <g:each var="quote" in="${myQuotes}">
+        <div id="quote">
+            <q>${quote.content}</q>
+            <p>${quote.author.username}</p>
+            <br>
+        </div>
+    </g:each>
+</body>
 </html>

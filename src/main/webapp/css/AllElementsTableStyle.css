@@ -1,0 +1,92 @@
+:focus {
+    outline: none;
+}
+
+button.new {
+    margin-top: auto;
+    margin-right: 100px;
+    padding: 5px;
+    background: #963c90;
+    font-size: 14pt;
+    color: white;
+    height: 50px;
+    width: 180px;
+    border: 1px solid #71316b;
+    border-radius: 10px 40px;
+    box-shadow: 4px 4px 10px 1px gray;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #f1c737;
+    transition: color 2s;
+    background: radial-gradient(#cb5cbc, #72396c);
+}
+
+button:active {
+    background-color: #c321b4;
+    box-shadow: 10px 10px 10px #684B1D;
+    transform: translateX(3px) translateY(3px);
+}
+
+button.menuButton {
+    display: inline;
+    /* Рамка вокруг текста */
+    margin: 4px;
+    /* Поля вокруг текста */
+    padding: 5px;
+    background: #963c90;
+    font-size: 8pt;
+    color: white;
+    height: auto;
+    width: auto;
+    border: 1px solid #71316b;
+    border-radius: 3px;
+    box-shadow: 4px 4px 10px 1px #4b2245;
+    cursor: pointer;
+}
+
+button.menuButton:hover {
+    color: #f1c737;
+    transition: color 2s;
+    background: radial-gradient(#cb5cbc, #72396c);
+}
+
+button.menuButton:active {
+    background-color: #c321b4;
+    box-shadow: 10px 10px 10px #684B1D;
+    transform: translateX(3px) translateY(3px);
+}
+button.register {
+    background-color: #77BE5B;
+    border: 2px solid #77BE5B;
+    border-radius: 10px 40px;
+    box-shadow: 4px 4px 4px gray;
+    margin: auto;
+    padding: 13px 130px;
+    color: white;
+    font-size: 20pt;
+    text-font: Aerial;
+}
+
+button.register:hover {
+    color: yellow;
+    background-color: #53C328;
+    cursor: pointer;}
+
+button.register:active {
+    background: radial-gradient(#e250dc, #963c90);
+    box-shadow: 10px 10px 10px #684B1D;
+    transform: translateX(3px) translateY(3px);
+}
+
+table.center {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    text-align: center;
+}
+

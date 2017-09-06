@@ -3,7 +3,7 @@ package twee
 class Quote {
 
     String content
-    String author
+    User author
     Date created = new Date()
 
     static constraints = {

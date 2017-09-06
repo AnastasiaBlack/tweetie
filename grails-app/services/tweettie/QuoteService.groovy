@@ -2,6 +2,7 @@ package tweettie
 
 import grails.transaction.Transactional
 import twee.Quote
+import twee.User
 
 @Transactional
 class QuoteService {
@@ -24,5 +25,9 @@ class QuoteService {
             randomQuote = getStaticQuote()
         }
         return randomQuote
+    }
+
+    def postQuote(String content, User author){
+        new Quote(author: author, content : content).save()
     }
 }

@@ -11,17 +11,17 @@ class UserController {
     static scaffold = User
 
 
-    def index() {}
+//    def index() {}
 
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def allUsers() {
         def users = User.findAll()
 
-        GsonBuilder builder = new GsonBuilder()
-        builder.excludeFieldsWithoutExposeAnnotation()
-        Gson gson = builder.create()
-        String jsonString = gson.toJson(users)
+//        GsonBuilder builder = new GsonBuilder()
+//        builder.excludeFieldsWithoutExposeAnnotation()
+//        Gson gson = builder.create()
+//        String jsonString = gson.toJson(users)
+        [users: users]
 
-        render jsonString
     }
 }

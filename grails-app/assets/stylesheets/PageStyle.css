@@ -1,0 +1,96 @@
+body {
+    width: 85%;
+    margin: 0 auto;}
+
+header {
+    position: relative;
+    margin: auto;
+    background-color: #963c90;
+    width: 100%;
+    height: 100px;
+}
+
+h1 {
+    position: absolute;
+    font-size: 32pt;
+    color: white;
+    padding-left: 20px;
+    padding-bottom: 10px;
+
+}
+
+h2 {
+    margin: auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 75%;}
+
+a {
+    text-decoration: none;
+    color: black;}
+p+h2 {
+    padding-top: 15px;
+    margin-left: 65px;
+    margin-right:65px;
+}
+
+img {
+    margin: auto;
+    margin-bottom: 10px;
+    display: block;
+    padding: 5px;
+    border: 2px solid gray;}
+
+:focus {
+    outline: none;
+}
+
+div.gallery {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
+
+p {
+    margin: auto;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    text-align: justify;
+    width: 75%;
+}
+
+footer {
+    float: right;
+    font-size: 11pt;
+    font-family: Aerial;
+}
+
+
+ul.hr {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #963c90;
+}
+
+ul.hr li {
+    float: right;
+    display: inline;
+    background-color: #963c90;
+    padding-top: 45px;
+}
+
+input.search {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: white;
+    background-image: url('searchicon1.png');
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    padding: 6px 12px 6px 40px;
+}
