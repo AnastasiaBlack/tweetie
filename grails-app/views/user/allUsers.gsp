@@ -12,12 +12,20 @@
     <div id="user">
         ${user.username}
     </div>
+    %{--<div>--}%
+
+        %{--<button><g:link action="show" id="${user.id}">--}%
+            %{--Show user--}%
+        %{--</g:link>--}%
+    %{--</button>--}%
     <div>
-    <div>
-        <g:link action="show" id="${user.id}">
+
+        <button><g:link action="singleUser" params="${[id: user.id]}">
             Show user
         </g:link>
+        </button>
     </div>
+    <hr>
 </g:each>
 </body>
 </html>
