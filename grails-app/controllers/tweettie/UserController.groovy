@@ -16,13 +16,11 @@ class UserController {
     SpringSecurityService springSecurityService
 
 
-
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def home() {
         List quotes = Quote.all
         [quotes: quotes]
     }
-
 
 //    def index() {}
 
@@ -49,7 +47,22 @@ class UserController {
         User userToFollow = User.get(params.id)
         userService.followUser(userToFollow)
         User currentUser = springSecurityService.getCurrentUser()
+        redirect(action: "home")
 //        render(currentUser as JSON)
+    }
+
+    def register() {
+        if (request.method == "POST") {
+            def user = new User(params)
+            if (user.validate()) {
+                user.save()
+                flash.message = "Successfully Created User"
+                redirect(uri: '/')
+            } else {
+                flash.message = "Error Registering User"
+                return [user: user]
+            }
+        }
     }
 
 

@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+        "/"(controller:"user", action: "home")//view:"/index")
 
         "400"(controller: "error", action: "invalid")
         "500"(controller: "error", action: "denied")
