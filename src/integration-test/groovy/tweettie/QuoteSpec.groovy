@@ -11,24 +11,26 @@ import twee.User
 @Integration
 @Rollback
 @TestFor(QuoteService)
-@Mock([User])
+@Mock([User, Quote])
 class QuoteSpec extends Specification {
     @Shared
     int initCount
 
     def setup() {
-//        initCount = Quote.count()
-//        def user = new User(username: "Keith", password: "keith").save(false)
-//        new Quote(author: user, content: "It is pretty cold in Canada, eh?").save(false)
+
     }
 
     def cleanup() {
     }
 
-//    void "test Quote is saved"() {
-//        expect: "count increased by one"
-//        Quote.count() == initCount + 1
-//    }
+    void "test Quote is saved"() {
+        when:
+        initCount = Quote.count()
+        def user = new User(username: "Keith", password: "keith").save(false)
+        new Quote(author: user, content: "It is pretty cold in Canada, eh?").save(false)
+        then: "count increased by one"
+        Quote.count() == initCount + 1
+    }
 
     void "test Random quote is generated"() {
         given:

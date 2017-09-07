@@ -47,9 +47,9 @@ class UserController {
 
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def follow() {
-        User userToFollow = User.get(params.id)
-        userService.followUser(userToFollow)
         User currentUser = springSecurityService.getCurrentUser()
+        User userToFollow = User.get(params.id)
+        userService.followUser(userToFollow, currentUser)
         redirect(action: "home")
 //        render(currentUser as JSON)
     }

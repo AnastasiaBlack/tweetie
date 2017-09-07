@@ -8,8 +8,7 @@ import twee.User
 class UserService {
     SpringSecurityService springSecurityService
 
-    def followUser(User userToFollow) {
-        User currentUser = springSecurityService.getCurrentUser()
+    def followUser(User userToFollow, User currentUser) {
         currentUser.followedUsers<<userToFollow
     }
 }

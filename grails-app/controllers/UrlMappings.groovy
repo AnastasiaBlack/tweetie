@@ -1,4 +1,3 @@
-package controllers
 class UrlMappings {
 
     static mappings = {
