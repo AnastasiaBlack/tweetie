@@ -6,6 +6,9 @@ import grails.converters.JSON
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import groovy.json.*
+import org.springframework.security.authentication.AuthenticationTrustResolver
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.Authentication
 import twee.Quote
 import twee.User
 
@@ -57,6 +60,7 @@ class UserController {
             if (user.validate()) {
                 user.save()
                 flash.message = "Successfully Created User"
+                springSecurityService.reauthenticate(user.username, user.password)
                 redirect(uri: '/')
             } else {
                 flash.message = "Error Registering User"

@@ -1,3 +1,4 @@
+package controllers
 class UrlMappings {
 
     static mappings = {
@@ -14,6 +15,7 @@ class UrlMappings {
         "403"(controller: "error", action: "denied")
         "404"(controller: "error", action: "notFound")
 
+        "/login/auth"(controller: "user", action:"register")
         "/login/$action?"(controller: "login")
         "/logout/$action?"(controller: "logout")
     }
