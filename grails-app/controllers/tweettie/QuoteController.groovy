@@ -3,6 +3,7 @@ package tweettie
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import twee.Quote
+import twee.User
 
 class QuoteController {
 

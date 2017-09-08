@@ -7,10 +7,6 @@ import twee.User
 @Transactional
 class QuoteService {
 
-    def serviceMethod() {
-
-    }
-
     def getStaticQuote() {
         return new Quote(author: "Alice", content: "We are all insane here.")
     }
