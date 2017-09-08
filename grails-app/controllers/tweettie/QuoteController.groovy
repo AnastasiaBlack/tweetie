@@ -16,7 +16,7 @@ class QuoteController {
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def home() {
         User user = springSecurityService.currentUser;
-        List quotes = user.followedUsers.collect {followedUser -> Quote.findAllWhere(author: followedUser)}
+        List quotes = user.followedUsers.collect {followedUser -> Quote.findAllWhere(author: followedUser)}.flatten()
         [quotes: quotes]
     }
 
