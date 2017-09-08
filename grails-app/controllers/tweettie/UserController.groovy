@@ -1,14 +1,7 @@
 package tweettie
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import grails.converters.JSON
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
-import groovy.json.*
-import org.springframework.security.authentication.AuthenticationTrustResolver
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.Authentication
 import twee.Quote
 import twee.User
 
@@ -25,13 +18,10 @@ class UserController {
         [quotes: quotes]
     }
 
-//    def index() {}
-
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def allUsers() {
-        long currentUserId = springSecurityService.getCurrentUserId()
-        def users = User.findAllByIdNotEqual(currentUserId)
-
+        User currentUser = springSecurityService.getCurrentUser()
+        def users = userService.findFriends(currentUser)
 //        GsonBuilder builder = new GsonBuilder()
 //        builder.excludeFieldsWithoutExposeAnnotation()
 //        Gson gson = builder.create()

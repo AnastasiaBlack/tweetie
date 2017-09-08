@@ -9,6 +9,15 @@ class UserService {
     SpringSecurityService springSecurityService
 
     def followUser(User userToFollow, User currentUser) {
-        currentUser.followedUsers<<userToFollow
+        currentUser.followedUsers << userToFollow
+    }
+
+    def showFollowedByCurrentUser(User currentUser) {
+        currentUser.followedUsers
+    }
+
+    def findFriends(User currentUser) {
+        Long userId = currentUser.id
+        User.findAllByIdNotEqual(userId)
     }
 }

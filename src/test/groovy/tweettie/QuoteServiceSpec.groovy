@@ -2,6 +2,7 @@ package tweettie
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
+import spock.lang.Shared
 import spock.lang.Specification
 import twee.Quote
 import twee.User
@@ -12,8 +13,11 @@ import twee.User
 @TestFor(QuoteService)
 @Mock([User, Quote])
 class QuoteServiceSpec extends Specification {
+    @Shared
+    User user
 
     def setup() {
+        user = new User(username: "Masha", password: "masha")
     }
 
     def cleanup() {
@@ -24,13 +28,30 @@ class QuoteServiceSpec extends Specification {
         service.getStaticQuote().content == "We are all insane here."
     }
 
-    void "get a newly created quote when postQuote is executed"(){
+    void "get a newly created quote when postQuote is executed"() {
         when:
         String content = "I am Alice"
-        User user = new User(username: "Masha", password: "masha")
+
         Quote currentQuote = service.postQuote(content, user)
 
         then:
-        currentQuote.content=="I am Alice"
+        currentQuote.content == "I am Alice"
     }
+
+    void "get static quote if db is empty when we try to get a random quote"() {
+        when:
+        Quote.count() == 0
+
+        then:
+        service.getRandomQuote().content == service.staticQuote.content
+    }
+
+    void "get random quote which is not equal to static if db is not empty"() {
+        when:
+        new Quote(author: user, content: "Some content of the quote").save(false)
+
+        then:
+        service.getRandomQuote().content != service.staticQuote.content
+    }
+
 }
