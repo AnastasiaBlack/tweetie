@@ -42,11 +42,17 @@ class QuoteController {
         String content = params.content
         Quote freshQuote = quoteService.postQuote(content, author)
         freshQuote.save()
-        [quote: freshQuote]
+        redirect(action: "quoteEditor")
+       // [quote: freshQuote]
     }
 
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def quoteEditor() {
+        User user = springSecurityService.currentUser
+        List<?> myQuotes = Quote.findAllWhere(author:user)
+        List quotes = user.followedUsers.collect {followedUser -> Quote.findAllWhere(author: followedUser)}.flatten()
+        List overAll = myQuotes+quotes
+        [quotes: overAll]
     }
 
 }

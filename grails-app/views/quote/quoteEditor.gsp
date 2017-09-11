@@ -16,5 +16,14 @@
     <input type="submit" value="Save" />
 </form>
 
+<hr>
+
+<g:each var="quote" in="${quotes}">
+    <div id="quote">
+        <q>${quote.content}</q>
+        <p>${quote.author.username}</p>
+        <br>
+    </div>
+</g:each>
 </body>
 </html>
