@@ -54,7 +54,6 @@ class UserServiceSpec extends Specification {
         service.showFollowedByCurrentUser(currentUser).size() == followee.size()
     }
 
-
     void "test that all users are returned except for the loggedIn user"() {
         setup:
         User currentUser = new User(username: "me", password: "gejghe").save(false)
