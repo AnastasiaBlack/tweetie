@@ -16,7 +16,7 @@ class QuoteController {
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def home() {
         User user = springSecurityService.currentUser;
-        List quotes = user.followedUsers.collect {followedUser -> Quote.findAllWhere(author: followedUser)}.flatten()
+        List quotes = user.followedUsers.collect { followedUser -> Quote.findAllWhere(author: followedUser) }.flatten()
         [quotes: quotes]
     }
 
@@ -43,15 +43,18 @@ class QuoteController {
         Quote freshQuote = quoteService.postQuote(content, author)
         freshQuote.save()
         redirect(action: "quoteEditor")
-       // [quote: freshQuote]
+        // [quote: freshQuote]
     }
 
     @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def quoteEditor() {
         User user = springSecurityService.currentUser
-        List<?> myQuotes = Quote.findAllWhere(author:user)
-        List quotes = user.followedUsers.collect {followedUser -> Quote.findAllWhere(author: followedUser)}.flatten()
-        List overAll = myQuotes+quotes
+        List<?> myQuotes = Quote.findAllWhere(author: user)
+        List quotes = user.followedUsers.collect { followedUser -> Quote.findAllWhere(author: followedUser) }.flatten()
+        List overAll = (myQuotes + quotes).sort { a, b ->
+            (a as Quote).created == (b as Quote).created ? 0 : (a as Quote).created > (b as Quote).created ? 1 : -1
+        }
+        .reverse()
         [quotes: overAll]
     }
 
