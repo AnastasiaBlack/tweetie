@@ -17,7 +17,7 @@ class QuoteController {
     def home() {
         User user = springSecurityService.currentUser;
         List quotes = user.followedUsers.collect { followedUser -> Quote.findAllWhere(author: followedUser) }.flatten()
-        .sort{a,b-> (a as Quote).created== (b as Quote).created?0: (a as Quote).created> (b as Quote).created?1:-1}
+                .sort { a, b -> (a as Quote).created == (b as Quote).created ? 0 : (a as Quote).created > (b as Quote).created ? 1 : -1 }
         [quotes: quotes]
     }
 
@@ -54,8 +54,7 @@ class QuoteController {
         List quotes = user.followedUsers.collect { followedUser -> Quote.findAllWhere(author: followedUser) }.flatten()
         List overAll = (myQuotes + quotes).sort { a, b ->
             (a as Quote).created == (b as Quote).created ? 0 : (a as Quote).created > (b as Quote).created ? 1 : -1
-        }
-        .reverse()
+        }.reverse()
         [quotes: overAll]
     }
 
